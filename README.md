@@ -18,7 +18,7 @@ function loadSafp(filePath)
   if checkFile~=nil then
     io.close(checkFile)
   else
-    print("Flight plan not found (" .. arg .. ")")
+    print("Flight plan not found (" .. filePath .. ")")
     return
   end
 
@@ -55,4 +55,4 @@ pos.y - latitude of waypoint position
 pos.z - altitude of waypoint position
 ```
 
-You can easily generate flight plan files using [this service](http://sampmap.ru/samap)
+You can easily generate flight plan files using [this site](http://sampmap.ru/samap)

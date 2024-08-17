@@ -54,3 +54,5 @@ pos.x - longitude of waypoint position
 pos.y - latitude of waypoint position
 pos.z - altitude of waypoint position
 ```
+
+You can easily generate flight plan files using [this service](http://sampmap.ru/samap)

@@ -1,7 +1,7 @@
 # San Andreas Flight Plan Reading Library for [moonloader](https://www.blast.hk/threads/13305/)
 This library allows you to read waypoints data from San Andreas Flight Plan (*.safp) files.
 
-[<img src="https://github.com/user-attachments/assets/2f5ef873-bfea-435d-b243-36fb2ca114ed" width="20">](README_RUS.md)![Russian language ReadMe]()
+[<img src="https://github.com/user-attachments/assets/2f5ef873-bfea-435d-b243-36fb2ca114ed" width="20">](README_RUS.md)![Russian language ReadMe](README_RUS.md)
 
 
 ## Installation and use.

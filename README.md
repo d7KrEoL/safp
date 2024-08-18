@@ -1,5 +1,5 @@
 # San Andreas Flight Plan Reading Library for [moonloader](https://www.blast.hk/threads/13305/)
-This library allows you to read flight waypoints data from San Andreas Flight Plan (*.safp) files.
+This library allows you to read waypoints data from San Andreas Flight Plan (*.safp) files.
 
 ## Installation and use.
 To install library to your San Andreas game you need to place safp.lua file into your game directory -> moonloader -> lib
@@ -13,7 +13,7 @@ Then you can use a code like this to load waypoints data from any safp file:
 ```
 function loadSafp(filePath)
 
-  --Check if file exists
+  --Check if file exist
   local checkFile=io.open(filePath,"r")
   if checkFile~=nil then
     io.close(checkFile)
@@ -25,8 +25,8 @@ function loadSafp(filePath)
   --Loading waypoints data from file using moonloader library "safp"
   local wpData = safp.Load(filePath)
 
-  --Now you can simply use wpData as a list of waypoint elements
-  yourGetWaypointDataFunc(wpData)
+  --Now you can simply use wpData as a list of waypoint elements in your function
+  yourGetWaypointDataFunc(safp.Waypoints)
 
   --Or iterate it like:
   for i = 1, #safp.Waypoints do
@@ -40,19 +40,19 @@ function loadSafp(filePath)
 end
 ```
 
-wpData looks like this:
+Waypoints data struct looks like this:
 
 ```
-wpData = {wpid, pos = {x, y, z}} 
+Waypoints = {wpid, pos = {x, y, z}} 
 ```
 
 where:
 
 ```
-wpid is number (id) of waypoint
-pos.x - longitude of waypoint position
-pos.y - latitude of waypoint position
-pos.z - altitude of waypoint position
+(int) wpid - number (id) of waypoint
+(float) pos.x - longitude of waypoint position
+(float) pos.y - latitude of waypoint position
+(float) pos.z - altitude of waypoint position
 ```
 
 You can easily generate flight plan files using [this site](http://sampmap.ru/samap)

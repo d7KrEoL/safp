@@ -65,6 +65,7 @@ stock SaveFile(const filePath[], const Data[][FlightPlanData], dataSize)
 		if (Data[i][number] == -1)
 		    break;
 		format(stringWrite, sizeof(stringWrite), "{Waypoint=%d;PosX=%.2f;PosY=%.2f;PosZ=%.2f}\n", Data[i][number], Data[i][posX], Data[i][posY], Data[i][posZ]);
+		ReplaceSymb(stringWrite, '.', ',');
 		fwrite(nFile, stringWrite);
 	}
 	fclose(nFile);
@@ -127,6 +128,7 @@ stock LoadFile(const filePath[])
 	{
 	    if (buffer[0] != '{')
 	        continue;
+		ReplaceSymb(buffer, ',', '.');
 		resultData[count] = FPReadLine(buffer);
 		count++;
 	}

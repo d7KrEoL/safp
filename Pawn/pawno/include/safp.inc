@@ -17,9 +17,7 @@ enum FlightPlanData
 	Float: posZ,
 };
 
-forward SplitLine(const strsrc[], strdest[][], delimiter);
-
-stock ReplaceSymb(stringReplace[], from, to)
+stock FPReplaceSymb(stringReplace[], from, to)
 {
 	for (new i = 0; i < strlen(stringReplace); i++)
 	{
@@ -28,7 +26,7 @@ stock ReplaceSymb(stringReplace[], from, to)
 	}
 }
 
-public SplitLine(const strsrc[], strdest[][], delimiter)
+stock FPSplitLine(const strsrc[], strdest[][], delimiter)
 {
         new i, li;
         new aNum;
@@ -47,7 +45,7 @@ public SplitLine(const strsrc[], strdest[][], delimiter)
         return 1;
 }
 
-stock SaveFile(const filePath[], const Data[][FlightPlanData], dataSize)
+stock SaveFlightPlan(const filePath[], const Data[][FlightPlanData], dataSize)
 {
 	new File: nFile = fopen(filePath, io_write);
 	if (nFile == File:0)
@@ -65,7 +63,7 @@ stock SaveFile(const filePath[], const Data[][FlightPlanData], dataSize)
 		if (Data[i][number] == -1)
 		    break;
 		format(stringWrite, sizeof(stringWrite), "{Waypoint=%d;PosX=%.2f;PosY=%.2f;PosZ=%.2f}\n", Data[i][number], Data[i][posX], Data[i][posY], Data[i][posZ]);
-		ReplaceSymb(stringWrite, '.', ',');
+		FPReplaceSymb(stringWrite, '.', ',');
 		fwrite(nFile, stringWrite);
 	}
 	fclose(nFile);
@@ -94,10 +92,10 @@ stock FPReadLine(const line[])
     new resultData[FlightPlanData];
 	new bigParts[4][48];
 	new smallParts[2][24];
-    SplitLine(line, bigParts, ';');
+    FPSplitLine(line, bigParts, ';');
     for (new i = 0; i < 4; i++)
     {
-		SplitLine(bigParts[i], smallParts, '=');
+		FPSplitLine(bigParts[i], smallParts, '=');
 		if(!strcmp(smallParts[0], "{Waypoint"))
 		    sscanf(smallParts[1], "d", resultData[number]);
 		else if(!strcmp(smallParts[0], "PosX"))
@@ -106,14 +104,14 @@ stock FPReadLine(const line[])
 		    sscanf(smallParts[1], "f", resultData[posY]);
 		else if(!strcmp(smallParts[0], "PosZ"))
 		{
-		    ReplaceSymb(smallParts[1], '}', '0');
+		    FPReplaceSymb(smallParts[1], '}', '0');
 		    sscanf(smallParts[1], "f", resultData[posZ]);
 		}
     }
     return resultData;
 }
 
-stock LoadFile(const filePath[])
+stock LoadFlightPlan(const filePath[])
 {
     new File: nFile = fopen(filePath, io_read);
     new resultData[128][FlightPlanData];
@@ -128,7 +126,7 @@ stock LoadFile(const filePath[])
 	{
 	    if (buffer[0] != '{')
 	        continue;
-		ReplaceSymb(buffer, ',', '.');
+		FPReplaceSymb(buffer, ',', '.');
 		resultData[count] = FPReadLine(buffer);
 		count++;
 	}

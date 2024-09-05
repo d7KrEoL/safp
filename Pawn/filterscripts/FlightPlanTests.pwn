@@ -25,10 +25,10 @@ public OnFilterScriptInit()
 	print("\n\nPreparing for tests...");
 	new totalTests = 0;
 	new successTests = 0;
-	
+
 	//File we'll be working with
 	new filePath[128] = "test.safp";
-	
+
 	//Will use generated data for this tests
 	new data[127][FlightPlanData];
 	for (new i = 0; i < sizeof(data); i++)
@@ -38,8 +38,8 @@ public OnFilterScriptInit()
 	    data[i][posY] = 17 + i;
 	    data[i][posZ] = 0.03 + i;
 	}
-	
-	
+
+
 	print("\n-----------");
 	//Just to know if you have sscanf installed and working correctly
 	print("Test sscanf\n");
@@ -58,18 +58,18 @@ public OnFilterScriptInit()
 	else
 	    format(sscanfString, sizeof(sscanfString), "result: %d %f %f %f (FAILED)", testNumber, x, y, z);
 	print(sscanfString);
-	
+
 	print("-----------");
 	print("Test 1 - Write data\n");
-	
+
 	/*
 	This function saving data into file
 	bool SaveFile(string filePath, FlightPlanData data, int dataSize);
 	it returns true if file was saved successfully and false if not
 	*/
-	new result = SaveFile(filePath, data, sizeof(data));
+	new result = SaveFlightPlan(filePath, data, sizeof(data));
 	//--------------------------------------------------
-	
+
 	new stringResult[128];
 	if (result)
 	{
@@ -81,9 +81,9 @@ public OnFilterScriptInit()
  	totalTests++;
 	print(stringResult);
 	print("-----------");
-	
+
 	print("Test 2 - Read data\n");
-	
+
 	//Will save data into this var
 	new totalData[128][FlightPlanData];
 	/*
@@ -94,9 +94,9 @@ public OnFilterScriptInit()
 	    will have [number] field equal to -1, like:
 				totalData[15][number] == -1
 	*/
-	totalData = LoadFile(filePath);
+	totalData = LoadFlightPlan(filePath);
 	//-----------------------------
-	
+
 	for (new i = 0; i < sizeof(totalData); i++)
 	{
 	    if(totalData[i][number] == -1) break;

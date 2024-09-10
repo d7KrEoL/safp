@@ -1,3 +1,3 @@
 ## San Andreas Flight Plan read/write library
 San Andreas Flight Plan (safp) is file format for flight plan data like waypoints, targets, airfield landing data, beacons, etc... 
-This library allows you to easily read/write data in safp file format. There is a version for [Lua](https://github.com/d7KrEoL/safp/tree/update-05.09/SAMP%20Lua) and [Pawn](https://github.com/d7KrEoL/safp/tree/update-05.09/Pawn) scripts.
+This library allows you to easily read/write data in safp file format. There is a version for [Lua](https://github.com/d7KrEoL/safp/tree/main/SAMP%20Lua) and [Pawn](https://github.com/d7KrEoL/safp/tree/main/Pawn) scripts.

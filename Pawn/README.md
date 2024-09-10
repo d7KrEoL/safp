@@ -38,4 +38,4 @@ new result = SaveFlightPlan(filePath, _fp_data, sizeof(_fp_data));
 //...
 ```
 
-#### [Test and code example](https://github.com/d7KrEoL/safp/blob/update-05.09/Pawn/filterscripts/FlightPlanTests.pwn)
+#### [Test and code example](https://github.com/d7KrEoL/safp/blob/main/Pawn/filterscripts/FlightPlanTests.pwn)

@@ -1,6 +1,9 @@
 ### Include for pawn. Allows to do same things as lib. for moonloader.
 #### Dependencies: [sscanf2](https://github.com/Y-Less/sscanf/releases)
 
+> [!WARNING]  
+> Pawn version of library is not yet ready!
+
 ### Usage:
 To save data as san andreas flight plan file use:
 ```C++
